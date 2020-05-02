@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -37,7 +38,7 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
     private String MESSAGESQUEUE;
 
     @Override
-    public BaseResponse findUserById(Long userId) {
+    public BaseResponse findUserById(@RequestParam("userId") Long userId) {
         UserEntity userEntity = memberMapper.findByID(userId);
         if (userEntity == null) {
             return setResultError("未查到用户");
@@ -105,7 +106,7 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
     }
 
     @Override
-    public BaseResponse getUserByToken(String token) {
+    public BaseResponse getUserByToken(@RequestParam("token") String token) {
         if (token == null) {
             return setResultError("token不能为空");
         }

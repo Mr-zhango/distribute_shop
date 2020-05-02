@@ -25,7 +25,7 @@ public class LoginController {
 
     private static final String LOGIN = "login";
 
-    private static final String INDEX = "index";
+    private static final String INDEX = "redirect:/";
 
     @Autowired
     private MemberServiceFegin memberServiceFegin;

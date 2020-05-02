@@ -5,6 +5,7 @@ import cn.myfreecloud.shop.entity.UserEntity;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author: zhangyang
@@ -16,7 +17,7 @@ public interface MemberService {
 
     // 查询用户 by id
     @RequestMapping(value = "/findUserById" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    BaseResponse findUserById(Long userId);
+    BaseResponse findUserById(@RequestParam("userId") Long userId);
 
     // 注册会员
     @RequestMapping(value = "/registerMember" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -29,5 +30,5 @@ public interface MemberService {
 
     // 查询用户信息 by token
     @RequestMapping(value = "/getUserByToken" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    BaseResponse getUserByToken(String token);
+    BaseResponse getUserByToken(@RequestParam("token") String token);
 }
