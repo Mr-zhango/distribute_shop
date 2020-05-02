@@ -27,6 +27,8 @@ public interface Constants {
     // 表示会员token
     String TOKEN_MEMBER = "TOKEN_MEMBER";
 
-    // token 有效期
-    Long TOKEN_MEMBER_TIME = new Long(60 * 60 * 24);
+    // token 有效期 默认90天
+    Long TOKEN_MEMBER_TIME = new Long(60 * 60 * 24 * 90);
+
+    String COOKIE_MEMBER_TOKEN = "cookie_member_token";
 }
