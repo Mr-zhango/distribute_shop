@@ -15,6 +15,7 @@
         <module>shop_api</module>
         <module>shop_member</module>
         <module>shop_message</module>
+        <module>shop_pc_web</module>
     </modules>
 
 

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 /**
  * @author: zhangyang
  * @date: 2020/4/30 23:23
@@ -50,6 +52,8 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
         String passWord = user.getPassword();
         String newPassWord = MD5Util.MD5(passWord);
         user.setPassword(newPassWord);
+        user.setCreated(new Date());
+        user.setUpdated(new Date());
         Integer insertUser = memberMapper.insertUser(user);
         if (insertUser <= 0) {
             return setResultError("注册失败!");

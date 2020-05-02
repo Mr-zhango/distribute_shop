@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date: 2020/4/30 23:22
  * @description:
  */
-
+@RequestMapping("/member")
 public interface MemberService {
 
     // 查询用户 by id
