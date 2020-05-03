@@ -31,4 +31,13 @@ public interface MemberService {
     // 查询用户信息 by token
     @RequestMapping(value = "/getUserByToken" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     BaseResponse getUserByToken(@RequestParam("token") String token);
+
+    // 查询用户信息 by openid
+    @RequestMapping(value = "/getUserByOpenid" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    BaseResponse getUserByOpenid(@RequestParam("openid") String openid);
+
+    // 查询用户信息 by openid
+    @RequestMapping(value = "/qqLogin" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    BaseResponse qqLogin(@RequestBody UserEntity userEntity);
 }
+

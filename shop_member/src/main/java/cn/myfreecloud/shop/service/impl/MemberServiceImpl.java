@@ -89,6 +89,10 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
 
         UserEntity userEntity = memberMapper.login(username, password);
 
+        return setLogin(userEntity);
+    }
+
+    private BaseResponse setLogin(UserEntity userEntity) {
         if (userEntity == null) {
             return setResultError("账号或者密码错误,登录失败");
         }
@@ -101,7 +105,7 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
         baseRedisService.setString(memberToken, userEntity.getId().toString(), Constants.TOKEN_MEMBER_TIME);
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("memberToken", memberToken);
+        jsonObject.put(Constants.COOKIE_MEMBER_TOKEN, memberToken);
         return setResultSuccess(jsonObject);
     }
 
@@ -122,6 +126,60 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
             return setResultError("未查到该用户信息:{}" + userId);
         }
         return setResultSuccess(userEntity);
+    }
+
+    @Override
+    public BaseResponse getUserByOpenid(@RequestParam("openid") String openid) {
+
+        // 验证参数
+        UserEntity userEntity = memberMapper.getUserByOpenid(openid);
+
+        if (StringUtils.isEmpty(userEntity)) {
+            return setResultError(Constants.HTTP_RES_CODE_201, "该用openid还未关联用户");
+        }
+
+        // 已经 经过授权, 自动登录
+        return setLogin(userEntity);
+    }
+
+    @Override
+    public BaseResponse qqLogin(@RequestBody UserEntity userEntity) {
+        String openid = userEntity.getOpenid();
+        if (StringUtils.isEmpty(openid)) {
+            return setResultError("openid不能为空");
+        }
+
+
+        // 先进行登录
+        BaseResponse baseResponse = login(userEntity);
+
+
+        // 错误处理
+        if (!Constants.HTTP_RES_CODE_200.equals(baseResponse.getResultCode())) {
+            return setLogin(userEntity);
+        }
+
+        JSONObject jsonObject = (JSONObject) baseResponse.getData();
+        String memberToken = jsonObject.getString(Constants.COOKIE_MEMBER_TOKEN);
+        BaseResponse userByToken = getUserByToken(memberToken);
+
+
+
+        // 错误处理
+        if (!Constants.HTTP_RES_CODE_200.equals(userByToken.getResultCode())) {
+            return setResultError("QQ账号关联失败");
+        }
+
+        UserEntity userByTokenData = (UserEntity) userByToken.getData();
+
+        Integer userId = userByTokenData.getId();
+        // 登录成功
+        Integer integer = memberMapper.updateUserByOpenid(openid, userId);
+
+        if (integer <= 0) {
+            return setResultError("QQ账号关联失败");
+        }
+        return setLogin(userEntity);
     }
 
     private String message(String mail) {

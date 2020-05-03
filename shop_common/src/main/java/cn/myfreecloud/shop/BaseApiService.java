@@ -25,6 +25,10 @@ public class BaseApiService {
     }
 
 
+    public BaseResponse setResultError(Integer code, String msg) {
+        return new BaseResponse(code, msg, null);
+    }
+
     public BaseResponse setResultError(String msg) {
         return new BaseResponse(Constants.HTTP_RES_CODE_500, msg, null);
     }
