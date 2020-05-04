@@ -8,3 +8,20 @@ eureka:
 spring:
   application:
     name: weixin
+
+logging:
+  level:
+    org.springframework.web: INFO
+    com.github.binarywang.demo.wx.mp: DEBUG
+    me.chanjar.weixin: DEBUG
+wx:
+  mp:
+    configs:
+      - appId: wx996750d322972d43
+        secret: 03e8918b6f70498dcf0c7a0330aa2172
+        token: zhangyang
+        aesKey:
+    #      - appId: 2222 （另一个公众号的appid，以下同上）
+    #        secret: 1111
+    #        token: 111
+    #        aesKey: 111
