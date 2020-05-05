@@ -63,7 +63,7 @@ public class MemberServiceImpl extends BaseApiService implements MemberService {
         String email = user.getEmail();
         String messAageJson = message(email);
         log.info("####会员服务推送消息到消息服务平台:{},messAageJson:{}", email, messAageJson);
-        sendMsg(messAageJson);
+        //sendMsg(messAageJson);
         return setResultSuccess();
     }
 

@@ -17,6 +17,7 @@
         <module>shop_message</module>
         <module>shop_pc_web</module>
         <module>shop_weixin</module>
+        <module>shop_pay</module>
     </modules>
 
 

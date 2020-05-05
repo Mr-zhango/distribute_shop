@@ -12,4 +12,9 @@ public class TokenUtils {
     public static String getMemberToken() {
         return Constants.TOKEN_MEMBER + "-" + UUID.randomUUID();
     }
+
+    // 生成支付token
+    public static String getPayToken() {
+        return Constants.TOKEN_PAY + "-" + UUID.randomUUID();
+    }
 }

@@ -35,4 +35,10 @@ public interface Constants {
     Long TOKEN_MEMBER_TIME = new Long(60 * 60 * 24 * 90);
 
     String COOKIE_MEMBER_TOKEN = "cookie_member_token";
+
+    // 支付token
+    String TOKEN_PAY = "TOKEN_pay";
+
+    // 订单支付有效期 15分钟
+    Long PAY_TOKEN_MEMBER_TIME =(long)  (60 * 15 );
 }
