@@ -15,6 +15,7 @@ import com.alipay.api.request.AlipayTradePagePayRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +31,7 @@ public class PayServiceImpl extends BaseApiService implements PayService {
     private PaymentInfoMapper paymentInfoMapper;
 
     // 创建支付令牌
-//    @RequestMapping("/createPayToken")
+    @RequestMapping("/createPayToken")
     public BaseResponse createPayToken(@RequestBody PaymentInfo paymentInfo) {
         // 1.创建支付请求信息
         Integer savePaymentType = paymentInfoMapper.savePaymentType(paymentInfo);
@@ -48,7 +49,7 @@ public class PayServiceImpl extends BaseApiService implements PayService {
     }
 
     // 使用支付令牌查找支付信息
-//    @RequestMapping("/findPayToken")
+    @RequestMapping("/findPayToken")
     public BaseResponse findPayToken(@RequestParam("payToken") String payToken) {
         // 1.参数验证
         if (StringUtils.isEmpty(payToken)) {

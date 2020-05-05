@@ -28,10 +28,10 @@ public class AlipayConfig {
 	public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApcPHiLpBpHrJ+mV7s97DbrN5r0wmj8/rk3XnvGr7Dm1OLSv+HE+L9zqK3zWsHDdo4JY5L7vMR42s3cEcpbUjoEQW+z6LCGEpQ4fESwmn/pJ6nZVJkTnlQNWf59e970X5NW8tC1LJKPfBFlZcaadI0tX2sI5V5ESMy+9Iqrd4cxIt7if4VfNPu72ma5x3y2/qfmmvFkT2OH22bmdC1MA/5FdaTWT3iUArJoYV1+c0mX4HKTJ/gfKh7I3lChUbQ8H6RlvkjfkKrF+sCVdIP20gmlz7VpVU640tZ9La3hJXhjJ4fRt80vOTe6F8pGKUop6P7sKOhh5m4nx9dSzK7cUQdQIDAQAB";
 
 	// 服务器异步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "https://zfb.free.qydev.com/notify_url.jsp";
+	public static String notify_url = "https://zfb.free.qydev.com/callBack/asynCallBack";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "https://zfb.free.qydev.com/return_url.jsp";
+	public static String return_url = "https://zfb.free.qydev.com/callBack/synCallBack";
 
 	// 签名方式
 	public static String sign_type = "RSA2";
