@@ -43,7 +43,7 @@ public class MailService implements MessageAdapter {
         // 内容
         simpleMailMessage.setText(text.replace("{}", mail));
         // mailSender.send(simpleMailMessage);
-        log.info("给发送邮件成功:{}"+mail);
+        log.info("给:{}发送邮件成功",mail);
     }
 
 }

@@ -3,26 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>distribute_shop</artifactId>
+        <artifactId>shop_api</artifactId>
         <groupId>cn.myfreecloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shop_api</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>shop_api_member</module>
-        <module>shop_api_pay</module>
-        <module>shop_api_order</module>
-    </modules>
+    <artifactId>shop_api_order</artifactId>
 
     <dependencies>
-        <!-- 支付宝依赖 -->
+        <!-- 基础依赖 -->
         <dependency>
-            <groupId>com.github.1991wangliang</groupId>
-            <artifactId>alipay-sdk</artifactId>
-            <version>1.0.0</version>
+            <groupId>cn.myfreecloud</groupId>
+            <artifactId>shop_common</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

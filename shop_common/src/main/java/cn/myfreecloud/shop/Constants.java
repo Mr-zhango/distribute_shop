@@ -39,6 +39,11 @@ public interface Constants {
     // 支付token
     String TOKEN_PAY = "TOKEN_pay";
 
+    // 支付成功
+    String PAY_SUCCESS = "success";
+    // 支付白
+    String PAY_FAIL = "fail";
+
     // 订单支付有效期 15分钟
     Long PAY_TOKEN_MEMBER_TIME =(long)  (60 * 15 );
 }
