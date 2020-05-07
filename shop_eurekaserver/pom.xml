@@ -11,5 +11,22 @@
 
     <artifactId>shop_eurekaserver</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.myfreecloud</groupId>
+            <artifactId>distribute_shop</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.codingapi</groupId>
+                    <artifactId>transaction-springcloud</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.codingapi</groupId>
+                    <artifactId>tx-plugins-db</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
 
 </project>

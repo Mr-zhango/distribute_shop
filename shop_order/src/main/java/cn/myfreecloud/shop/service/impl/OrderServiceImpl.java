@@ -4,7 +4,9 @@ import cn.myfreecloud.shop.BaseApiService;
 import cn.myfreecloud.shop.BaseResponse;
 import cn.myfreecloud.shop.api.order.OrderService;
 import cn.myfreecloud.shop.mapper.OrderMapper;
+import com.codingapi.tx.annotation.ITxTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,11 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @description:
  */
 @RestController
-public class OrderServiceImpl extends BaseApiService implements OrderService {
+public class OrderServiceImpl extends BaseApiService implements OrderService , ITxTransaction {
 
     @Autowired
     private OrderMapper orderMapper;
 
+    @Transactional
     @Override
     public BaseResponse updateOrderIdInfo(@RequestParam("isPay") Long isPay,
                                           @RequestParam("payId") String aliPayId,
